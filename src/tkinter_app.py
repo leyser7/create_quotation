@@ -13,7 +13,7 @@ class tkinterApp(tk.Tk):
         # __init__ function for class Tk
         tk.Tk.__init__(self, *args, **kwargs)
 
-        self.title("Crear Cotizacion")
+        self.title("Crear Cotización")
         self.client_name = "Sin definir"
         self.description = "Sin descripcion general"
         self.items_n = []
