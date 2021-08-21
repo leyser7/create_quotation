@@ -54,7 +54,7 @@ def resource_path(relative_path):
 config_path = resource_path("config")
 image_path = "tarjeta.png"
 file_path = "cotizacion.xlsx"
-output_file = "output.xlsx"
+output_file = "cotizacion.xlsx"
 wb = load_workbook(f"{config_path}/{file_path}")
 ws = wb["Hoja1"]  # or wb.active
 
