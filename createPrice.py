@@ -56,7 +56,6 @@ image_path = "tarjeta.png"
 file_path = "cotizacion.xlsx"
 output_file = "output.xlsx"
 wb = load_workbook(f"{config_path}/{file_path}")
-
 ws = wb["Hoja1"]  # or wb.active
 
 ws["R4"] = f"A-{random.randint(10150,10300)}"
