@@ -3,10 +3,20 @@ import sys
 import random
 import logging
 import datetime
+import argparse
 from openpyxl import load_workbook
 from openpyxl.styles import Border, Side, Alignment
 from src.tkinter_app import tkinterApp
 from src.cli_app import cliApp
+
+# Initiate the parser
+parser = argparse.ArgumentParser()
+
+# Add long and short argument
+parser.add_argument("--mode", "-m", help="set mode")
+
+# Read arguments from the command line
+args = parser.parse_args()
 
 currentDateTime = datetime.datetime.now()
 date = currentDateTime.date()
@@ -55,11 +65,14 @@ set_border(ws, "R4:U4")
 ws["R4"].alignment = Alignment(horizontal="center")
 
 
-# app = tkinterApp()
-# app.mainloop()
+# Check for mode
+if args.mode == "cli":
+    app = cliApp()
+    app.exec()
+else:
+    app = tkinterApp()
+    app.mainloop()
 
-app = cliApp()
-app.exec()
 
 client_name = app.client_name
 description = app.description
