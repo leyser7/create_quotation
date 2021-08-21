@@ -43,6 +43,14 @@ class tkinterApp(tk.Tk):
             frame.grid(row=0, column=0, sticky="nsew")
 
         self.show_frame(StartPage)
+        windowWidth = self.winfo_reqwidth()
+        windowHeight = self.winfo_reqheight()
+        print("Width", windowWidth, "Height", windowHeight)
+
+        # Gets both half the screen width/height and window width/height
+        positionRight = int(self.winfo_screenwidth() / 2.5 - windowWidth / 2)
+        positionDown = int(self.winfo_screenheight() / 2.5 - windowHeight / 2)
+        self.geometry("+{}+{}".format(positionRight, positionDown))
 
     # to display the current frame passed as
     # parameter
