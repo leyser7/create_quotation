@@ -66,27 +66,22 @@ class StartPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         # label of frame Layout 2
         self.controller = controller
-        text = (
-            "¡Bienvenido!"
-            # "Ahora "
-            #     "podras crear tu cotizacion de una "
-            #     "manera facil y sencilla.\n"
-            #     "Diligencia los siguientes datos."
+        texts = [
+            "¡Bienvenido!",
+            "Ahora podras crear tu cotización",
+            "de una forma fácil y sencilla",
+        ]
+        for i, text in enumerate(texts):
+            label = ttk.Label(self, text=text, font=LARGEFONT)
+            label.grid(row=i, column=0, columnspan=2, padx=10, pady=10)
+        label = ttk.Label(
+            self, text="Nombre del cliente: ", font=MEDIUMFONT, width=22
         )
-        label = ttk.Label(self, text=text, font=LARGEFONT)
-
-        # label.configure(anchor="center")
-        # putting the grid in its place by using
-        # grid
-        label.grid(row=0, column=0, columnspan=2)
-
-        label1 = ttk.Label(self, text="Nombre del cliente: ", font=MEDIUMFONT)
-        label1.grid(row=1, column=0, padx=10)
-
+        label.grid(row=3, column=0, padx=10, pady=20)
         text_entry = ttk.Entry(self, width=30)
-        text_entry.grid(row=1, column=1, padx=10)
-        # spacer1 = tk.Label(self, text="Texto")
-        # spacer1.grid(row=2, column=0, rowspan=3, columnspan=3)
+        text_entry.grid(row=3, column=1, padx=10, pady=20)
+        spacer = tk.Label(self, text="")
+        spacer.grid(row=4, column=0, columnspan=2, padx=10, pady=20)
         button1 = ttk.Button(
             self,
             text="Siguiente",
@@ -95,7 +90,7 @@ class StartPage(tk.Frame):
                 self.get_values(text_entry),
             ],
         )
-        button1.grid(row=5, column=2, padx=10, pady=10)
+        button1.grid(row=5, column=1, padx=10, pady=10)
         controller.create_exit_button(self)
 
     def get_values(self, text_entry):
@@ -109,7 +104,7 @@ class EnterArticle(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         # Header
-        self.n = 0
+        self.n = 1
         self.text = tk.StringVar()
         self.text.set(f"Ingrese la informacion del articulo {self.n}")
         label = ttk.Label(
@@ -130,7 +125,7 @@ class EnterArticle(tk.Frame):
         self.unit_value_entry = ttk.Entry(
             self, width=30, validate="all", validatecommand=vcmd
         )
-        self.unit_value_entry.grid(row=1, column=1, padx=10)
+        self.unit_value_entry.grid(row=1, column=1, padx=10, pady=10)
         self.unit_value_entry.insert(0, 0)
         # Item n
         label = ttk.Label(self, text="Cantidad de articulos:", font=MEDIUMFONT)
@@ -138,7 +133,7 @@ class EnterArticle(tk.Frame):
         self.item_n_entry = ttk.Entry(
             self, width=30, validate="all", validatecommand=vcmd
         )
-        self.item_n_entry.grid(row=2, column=1, padx=10)
+        self.item_n_entry.grid(row=2, column=1, padx=10, pady=10)
         self.item_n_entry.insert(0, 0)
         # Description
         label = ttk.Label(
@@ -146,7 +141,7 @@ class EnterArticle(tk.Frame):
         )
         label.grid(row=3, column=0, padx=10, pady=10, sticky="w")
         self.desc_text = tk.Text(self, width=30, height=3)
-        self.desc_text.grid(row=3, column=1, padx=10)
+        self.desc_text.grid(row=3, column=1, padx=10, pady=10)
         # Add item
         button1 = ttk.Button(
             self,
@@ -194,13 +189,19 @@ class EndPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = ttk.Label(self, text="Generar cotizacion", font=LARGEFONT)
+        label = ttk.Label(self, text="Generar cotización", font=LARGEFONT)
         label.grid(row=0, column=0, padx=10, pady=10, columnspan=2)
+        spacer = tk.Label(self, text="")
+        spacer.grid(row=1, column=0, columnspan=2, padx=10, pady=20)
         # Description
-        label = ttk.Label(self, text="Descripcion general:", font=MEDIUMFONT)
-        label.grid(row=1, column=0, padx=10, pady=10, sticky="w")
+        label = ttk.Label(
+            self, text="Descripcion general:", font=MEDIUMFONT, width=22
+        )
+        label.grid(row=2, column=0, padx=10, pady=10, sticky="w")
         self.desc_text = tk.Text(self, width=30, height=3)
-        self.desc_text.grid(row=1, column=1, padx=10)
+        self.desc_text.grid(row=2, column=1, padx=10, pady=10)
+        spacer = tk.Label(self, text="")
+        spacer.grid(row=3, column=0, columnspan=2, padx=10, pady=20)
         # Generate
         button2 = ttk.Button(
             self,
